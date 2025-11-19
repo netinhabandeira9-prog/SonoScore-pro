@@ -3,14 +3,8 @@ import { AnalysisResult, ActionPlanPhase, SupplementRecommendation } from '../ty
 import { Lock, CheckCircle, Star, Unlock, Moon, Activity, Clock, ShieldCheck, Brain, Check, Share2, Download, MessageCircle, Sun, Coffee, QrCode, Calendar, Pill, ChevronRight, RotateCcw, Copy, Loader2, AlertCircle } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import { paymentService } from '../services/paymentService';
-
-// Declare jsPDF via CDN types implicitly
-declare global {
-  interface Window {
-    jspdf: any;
-    html2canvas: any;
-  }
-}
+import html2canvas from 'html2canvas';
+import { jsPDF } from 'jspdf';
 
 interface ResultsProps {
   analysis: AnalysisResult;
@@ -84,8 +78,8 @@ export const Results: React.FC<ResultsProps> = ({ analysis, userEmail, isPaid, o
         return;
     }
 
-    if (!resultRef.current || !window.html2canvas || !window.jspdf) {
-        alert("Erro ao gerar PDF. Bibliotecas não carregadas.");
+    if (!resultRef.current) {
+        alert("Erro ao gerar PDF. Elemento não encontrado.");
         return;
     }
     
@@ -93,10 +87,11 @@ export const Results: React.FC<ResultsProps> = ({ analysis, userEmail, isPaid, o
     try {
         const element = resultRef.current;
         
+        // Hide buttons for print
         const buttons = document.querySelectorAll('.no-print');
         buttons.forEach((el: any) => el.style.display = 'none');
 
-        const canvas = await window.html2canvas(element, {
+        const canvas = await html2canvas(element, {
             scale: 2,
             backgroundColor: '#0f172a',
             useCORS: true,
@@ -104,10 +99,11 @@ export const Results: React.FC<ResultsProps> = ({ analysis, userEmail, isPaid, o
             allowTaint: true
         });
 
+        // Restore buttons
         buttons.forEach((el: any) => el.style.display = 'flex');
 
         const imgData = canvas.toDataURL('image/png');
-        const pdf = new window.jspdf.jsPDF({
+        const pdf = new jsPDF({
             orientation: 'p',
             unit: 'mm',
             format: 'a4'

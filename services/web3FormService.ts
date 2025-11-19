@@ -1,7 +1,7 @@
 import { UserData } from "../types";
 
-// Ensure you have REACT_APP_WEB3FORM_KEY in your environment or Vercel settings
-const ACCESS_KEY = process.env.REACT_APP_WEB3FORM_KEY || 'YOUR_WEB3FORMS_PUBLIC_KEY_HERE';
+// Atualizado para suportar Vite (import.meta.env) e Fallback
+const ACCESS_KEY = (import.meta as any).env?.VITE_WEB3FORM_KEY || (typeof process !== 'undefined' ? (process as any).env?.REACT_APP_WEB3FORM_KEY : undefined) || 'YOUR_WEB3FORMS_PUBLIC_KEY_HERE';
 
 export const submitLead = async (user: UserData, answers: any) => {
   try {

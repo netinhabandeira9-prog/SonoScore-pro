@@ -1,9 +1,27 @@
 import React, { useState } from 'react';
-import { Moon, Activity, Shield, ArrowRight, BarChart3, Brain, Clock, CheckCircle2, PlayCircle, Star, Quote, Plus, Minus, HelpCircle } from 'lucide-react';
+import { Moon, Activity, Shield, ArrowRight, BarChart3, Brain, Clock, CheckCircle2, PlayCircle, Star, Quote, Plus, Minus, HelpCircle, Instagram } from 'lucide-react';
 
 interface LandingPageProps {
   onStart: () => void;
 }
+
+// Ícone do TikTok personalizado
+const TikTokIcon = ({ className = "w-5 h-5" }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    width="24" 
+    height="24" 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2" 
+    strokeLinecap="round" 
+    strokeLinejoin="round" 
+    className={className}
+  >
+    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+  </svg>
+);
 
 // Componente de Estrelas de Fundo
 const StarField = () => {
@@ -397,6 +415,19 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
             <div className="flex justify-center mb-8">
                <Logo />
             </div>
+
+            {/* Redes Sociais */}
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mb-8">
+                <a href="https://instagram.com/sonoscorepro" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-slate-400 hover:text-pink-500 transition-colors">
+                    <Instagram size={20} />
+                    <span className="font-medium">@sonoscorepro</span>
+                </a>
+                <a href="https://tiktok.com/@sonoscorepro" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-slate-400 hover:text-cyan-400 transition-colors">
+                    <TikTokIcon className="w-5 h-5" />
+                    <span className="font-medium">@sonoscorepro</span>
+                </a>
+            </div>
+
             <div className="mt-8 pt-8 border-t border-white/5">
               <p className="text-slate-500 text-sm mb-4">
                 © 2025 SonoScore-Pro. Todos os direitos reservados.

@@ -10,11 +10,11 @@ import { Loader2 } from 'lucide-react';
 
 const App: React.FC = () => {
   const [currentState, setCurrentState] = useState<AppState>(AppState.LANDING);
-  const [userData, setUserData] = useState<UserData | null>(null>(null);
+  const [userData, setUserData] = useState<UserData | null>(null);
   const [analysis, setAnalysis] = useState<AnalysisResult | null>(null);
   const [isPaid, setIsPaid] = useState(false);
 
-  // DETECÇÃO PERFEITA DA PÁGINA /obrigado (funciona em SPA + Vercel)
+  // DETECÇÃO 100% CONFIÁVEL DA PÁGINA /obrigado (funciona em Vercel + SPA)
   const isThankYouPage = typeof window !== 'undefined' && window.location.href.includes('/obrigado');
 
   if (isThankYouPage) {
@@ -57,7 +57,7 @@ const App: React.FC = () => {
   const handleRetake = () => {
     if (window.confirm('Tem certeza? Ao reiniciar, você perderá o resultado atual.')) {
       setAnalysis(null);
-      setIsPaid(false);
+      setIsPaided(false);
       setCurrentState(AppState.QUIZ);
     }
   };
@@ -91,7 +91,7 @@ const App: React.FC = () => {
           </div>
           <div className="pb-6 opacity-60 px-4">
             <p className="text-slate-600 text-[10px] leading-relaxed max-w-2xl mx-auto">
-              <strong>Aviso Legal de Saúde:</strong> O conteúdo fornecido pelo SonoScore-Pro é estritamente para fins informativos e educativos...
+              <strong>Aviso Legal de Saúde:</strong> O conteúdo fornecido pelo SonoScore-Pro é estritamente para fins informativos e educativos e não constitui aconselhamento médico, diagnóstico ou tratamento. As estratégias de higiene do sono sugeridas são baseadas em práticas de bem-estar geral. Este aplicativo não substitui a consulta com médicos ou especialistas do sono. Se você suspeita que tem um distúrbio do sono ou qualquer outra condição médica, procure sempre a orientação de um profissional de saúde qualificado.
             </p>
             <p className="text-slate-700 text-[10px] mt-1">© 2025 SonoScore-Pro. Todos os direitos reservados.</p>
           </div>

@@ -210,9 +210,9 @@ export const Results: React.FC<ResultsProps> = ({ analysis, userEmail, isPaid, o
 
   return (
   <>
-    {/* SEO PERFEITO – funciona no Vite sem instalar nada */}
+    {/* SEO que funciona em qualquer Vite sem instalar nada */}
     <title>SonoScore {analysis.score}/100 • Protocolo Personalizado de 30 Dias</title>
-    <meta name="description" content={`Score ${analysis.score}/100 • Eficiência ${analysis.sleepEfficiency}% • Cronotipo ${analysis.circadianProfile.includes('Leão') ? 'Leão' : 'detectado'}. Protocolo de 30 dias com fases + suplementos (Magnésio, Ashwagandha KSM-66, L-Teanina).`} />
+    <meta name="description" content={`Score ${analysis.score}/100 • Eficiência ${analysis.sleepEfficiency}% • Cronotipo Leão. Protocolo completo de 30 dias com Reset Biológico, Higiene Avançada, Consolidação + suplementos (Ashwagandha KSM-66, Magnésio, L-Teanina).`} />
     <meta property="og:title" content={`Meu SonoScore é ${analysis.score}/100 – Veja meu protocolo completo`} />
     <meta property="og:description" content="Análise biométrica do sono + protocolo de 30 dias com suplementação personalizada" />
     <meta property="og:image" content="https://www.sonoscorepro.com.br/og-relatorio.jpg" />

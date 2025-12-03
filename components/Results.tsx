@@ -208,6 +208,22 @@ export const Results: React.FC<ResultsProps> = ({ analysis, userEmail, isPaid, o
   };
 
   return (
+  <>
+    {/* SEO PERFEITO PARA O RELATÓRIO */}
+    <head>
+      <title>SonoScore {analysis.score}/100 → Protocolo Personalizado de 30 Dias para Dormir 8h Profundas</title>
+      <meta name="description" content={`Análise biométrica completa: Score ${analysis.score}/100, eficiência só ${analysis.sleepEfficiency}%, cronotipo ${analysis.circadianProfile.includes('Leão') ? 'Leão' : 'detectado'}. Receba agora seu protocolo de 30 dias com fases + suplementos (Magnésio, Ashwagandha KSM-66, L-Teanina).`} />
+      <meta name="robots" content="index, follow" />
+      <link rel="canonical" href="https://www.sonoscorepro.com.br/resultado" />
+      
+      {/* Open Graph para compartilhamento lindo no WhatsApp/Facebook */}
+      <meta property="og:title" content={`Meu SonoScore é ${analysis.score}/100 – Veja meu protocolo completo`} />
+      <meta property="og:description" content="Fiz a análise biométrica do sono mais completa do Brasil. Descobri meu cronotipo, eficiência real e recebi um protocolo de 30 dias com suplementação personalizada." />
+      <meta property="og:image" content="https://www.sonoscorepro.com.br/og-relatorio.jpg" />
+      <meta property="og:url" content="https://www.sonoscorepro.com.br/resultado" />
+      <meta property="og:type" content="website" />
+    </head>
+
     <div className="min-h-screen bg-night-900 text-slate-200 selection:bg-accent-500/30 pb-12">
       {/* Top Navigation */}
       <nav className="bg-night-950/50 border-b border-white/5 py-4 backdrop-blur-md sticky top-0 z-50 print:hidden">
